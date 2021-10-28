@@ -7,6 +7,7 @@ dotenv.config()
 const port =  process.env.PORT||8210;
 const mongo = require('mongodb');
 const MongoClient = mongo.MongoClient;
+const cors = require('cors');
 //const mongourl = "mongodb://localhost:27017"
 const mongourl = "mongodb+srv://m001-student:vedantu123@sandbox.cou6h.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
@@ -15,6 +16,7 @@ let db;
 //to recieve data from form
 app.use(bodyParser.urlencoded({ extended:true}))
 app.use(bodyParser.json());
+app.use(cors())
 
 
 app.get('/', (req, res) => {
