@@ -43,10 +43,10 @@ app.get('/location',(req,res) =>{
 // query example
 app.get('/restaurants',(req,res) =>{
     var query = {}
-    if(req.query.cityId){
-        query={city:req.query.cityId}
+    if(req.query.stateId){
+        query = { state_id: Number(req.query.stateId) };
     }else if(req.query.mealtype){
-        query={"type.mealtype":req.query.mealtype}
+        query={"mealTypes.mealtype_id":req.query.mealtype}
     }
     db.collection('restaurants').find(query).toArray((err,result)=>{
         if(err) throw err;
