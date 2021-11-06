@@ -101,8 +101,7 @@ app.get('/quicksearch',(req,res) =>{
 
 //Details of perticular restaurant
 app.get('/details/:id', (req, res) =>{
-
-    db.collection('restaurants').find({"_id":req.params.id}).toArray((err,data) => {
+    db.collection('restaurants').find({"restaurant_id":Number(req.params.id)}).toArray((err,data) => {
         if(err) throw err
         res.send(data);
     })
