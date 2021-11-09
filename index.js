@@ -67,8 +67,8 @@ app.get('/filter/:mealType',(req,res) => {
         skip = Number(req.query.skip);
         limit = Number(req.query.limit)
     }
-    var mealType = req.params.mealType;
-    var query = {"type.mealtype":mealType};
+    var mealType = Number(req.params.mealType);
+    var query = { "mealTypes.mealtype_id": mealType };
     if(req.query.cuisine && req.query.lcost && req.query.hcost){
         query={
             $and:[{cost:{$gt:Number(req.query.lcost),$lt:Number(req.query.hcost)}}],
