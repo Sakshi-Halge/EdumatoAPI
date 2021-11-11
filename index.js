@@ -105,10 +105,18 @@ app.get('/details/:id', (req, res) =>{
         if(err) throw err
         res.send(data);
     })
-    // db.collection('restaurants').findOne({"_id":req.params.id},(err,data) => {
-    //     if(err) throw err
-    //     res.send(data);
-    // })
+})
+
+
+//restaurant menu
+app.get('/restaurantMenu/:res_id', (req, res) => {
+    console.log(req.params.res_id);
+    db.collection("restaurantMenu")
+      .find({ restaurant_id: Number(req.params.res_id) })
+      .toArray((err, data) => {
+        if (err) throw err;
+        res.send(data);
+      });
 })
 
 
