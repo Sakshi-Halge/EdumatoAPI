@@ -155,7 +155,7 @@ app.get("/viewOrders/:emailid", (req, res) => {
     skip = Number(req.query.skip);
     limit = Number(req.query.limit);
   }
-  let query = { "email": emailid};
+  query = { "email": emailid};
 
   db.collection("orders")
     .find(query)
