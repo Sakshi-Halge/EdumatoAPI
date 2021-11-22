@@ -81,11 +81,11 @@ app.get("/filter/:mealType", (req, res) => {
           cost: { $gt: Number(req.query.lcost), $lt: Number(req.query.hcost) },
         },
       ],
-      "Cuisine.cuisine": req.query.cuisine,
+      "cuisines.cuisine_id": req.query.cuisine,
       "type.mealtype": mealType,
     };
   } else if (req.query.cuisine) {
-    query = { "type.mealtype": mealType, "Cuisine.cuisine": req.query.cuisine };
+    query = { "type.mealtype": mealType, "cuisines.cuisine_id": req.query.cuisine };
     //query = {"type.mealtype":mealType,"Cuisine.cuisine":{$in:["1","5"]}}
   } else if (req.query.lcost && req.query.hcost) {
     let lcost = Number(req.query.lcost);
