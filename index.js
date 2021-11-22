@@ -89,6 +89,7 @@ app.get("/filter/:mealType", (req, res) => {
       "mealTypes.mealtype_id": mealType,
       "cuisines.cuisine_id": Number(req.query.cuisine),
     };
+    console.log(query);
     //query = {"type.mealtype":mealType,"Cuisine.cuisine":{$in:["1","5"]}}
   } else if (req.query.lcost && req.query.hcost) {
     let lcost = Number(req.query.lcost);
