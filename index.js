@@ -85,9 +85,14 @@ app.get("/filter/:mealType", (req, res) => {
       "mealTypes.mealtype_id": mealType,
     };
   } else if (req.query.cuisine) {
+    let cusineArr = req.query.cuisine.split('')
+    let finalCuisine = [];
+    cusineArr.map((item) => {
+      finalCuisine.push(Number(item));
+    })
     query = {
       "mealTypes.mealtype_id": mealType,
-      "cuisines.cuisine_id": Number(req.query.cuisine),
+      "cuisines.cuisine_id": {$in : finalCuisine},
     };
     console.log(query);
     //query = {"type.mealtype":mealType,"Cuisine.cuisine":{$in:["1","5"]}}
