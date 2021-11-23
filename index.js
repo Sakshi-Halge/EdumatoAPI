@@ -74,14 +74,13 @@ app.get("/filter/:mealType", (req, res) => {
   }
   let mealType = Number(req.params.mealType);
   let query = { "mealTypes.mealtype_id": mealType };
-  if (req.query.cuisine && req.query.lcost && req.query.hcost) {
+  if (req.query.lcost && req.query.hcost) {
     query = {
       $and: [
         {
           cost: { $gt: Number(req.query.lcost), $lt: Number(req.query.hcost) },
         },
       ],
-      "cuisines.cuisine_id": Number(req.query.cuisine),
       "mealTypes.mealtype_id": mealType,
     };
   } else if (req.query.cuisine) {
