@@ -10,7 +10,7 @@ const MongoClient = mongo.MongoClient;
 const cors = require("cors");
 //const mongourl = "mongodb://localhost:27017"
 const mongourl =
-  "mongodb+srv://m001-student:vedantu123@sandbox.cou6h.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+ "mongodb+srv://sakshi:hackerrank&*2109@sandbox.4zplg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
 let db;
 
@@ -78,7 +78,7 @@ app.get("/filter/:mealType", (req, res) => {
     query = {
       $and: [
         {
-          cost: { $gt: Number(req.query.lcost), $lt: Number(req.query.hcost) },
+          cost: { $gte: Number(req.query.lcost), $lte: Number(req.query.hcost) },
         },
       ],
       "mealTypes.mealtype_id": mealType,
