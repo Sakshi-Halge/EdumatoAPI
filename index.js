@@ -222,7 +222,7 @@ app.put("/updateOrder/:id", (req, res) => {
 
 MongoClient.connect(mongourl, (err, client) => {
   if (err) console.log("Error While Connecting");
-  db = client.db("Edumato_Final");
+  db = client.db("Edumato");
   app.listen(port, () => {
     console.log(`listening on http://localhost:${port}`);
   });
